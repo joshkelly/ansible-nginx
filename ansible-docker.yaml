@@ -8,11 +8,11 @@
       service:
           name: docker
           state: started
-    - name: Deploy NGINX
-      docker_container:
-        name: nginx
-        image: nginx
-        ports:
-         - "80:80"
-        state: present
+          #    - name: Deploy NGINX
+          #      docker_container:
+          #        name: nginx
+          #        image: nginx
+          #        ports:
+          #         - "80:80"
+          #        state: present
 
