@@ -8,11 +8,26 @@
       service:
           name: docker
           state: started
-          #    - name: Deploy NGINX
-          #      docker_container:
-          #        name: nginx
-          #        image: nginx
-          #        ports:
-          #         - "80:80"
-          #        state: present
-
+    - name: Install Pre-Reqs
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - epel-release
+        - python-pip
+    - name: Install virtualenv
+      pip:
+        name: virtualenv
+        state: present
+    - name: Install docker-py
+      pip:
+        name: docker-py
+        state: present
+    - name: Deploy NGINX
+      docker_container:
+        name: nginx
+        image: nginx
+        ports:
+         - "80:80"
+        state: started
+        recreate: yes
