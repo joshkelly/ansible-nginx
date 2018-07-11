@@ -8,13 +8,12 @@
       service:
           name: docker
           state: started
-    - name: Install Pre-Reqs
+    - name: Install EPEL RELEASE Pre-Reqs
       yum:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        - epel-release
-        - python-pip
+        name: epel-release
+    - name: Install PIP Pre-Reqs
+      yum:
+        name: python-pip
     - name: Install virtualenv
       pip:
         name: virtualenv
