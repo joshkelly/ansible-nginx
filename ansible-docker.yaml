@@ -26,6 +26,7 @@
       docker_container:
         name: nginx
         image: nginx
+        volumes: "/root/noteworx-react-mongodb/build:/var/www:rw"
         ports:
          - "80:80"
         state: started
